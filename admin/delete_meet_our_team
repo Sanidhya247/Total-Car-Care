@@ -1,0 +1,14 @@
+<?php
+$mid=$_GET["mid"];
+include('connect.php');
+$q=mysqli_query($con,"delete from meet_our_team where mid=$mid");
+if($q)
+{
+    echo "<script>alert('Deleted..');</script>";
+    header("location:meet_our_team.php");
+}
+else
+{
+    echo "<script>arlert('Not Deleted...Plz try again.....');</script>";
+}
+?>

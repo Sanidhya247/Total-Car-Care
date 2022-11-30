@@ -1,0 +1,219 @@
+<?php
+    include('h1.php');
+?>
+<!doctype html>
+<html lang="en">
+
+<!-- Mirrored from preview.colorlib.com/theme/bootstrap/contact-form-06/ by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 27 Mar 2022 16:35:42 GMT -->
+
+<head>
+    <script nonce="c6bd77db-fd9e-4841-b2c4-5999ebe05c2a">
+    (function(w, d) {
+        ! function(a, e, t, r) {
+            a.zarazData = a.zarazData || {}, a.zarazData.executed = [], a.zarazData.tracks = [], a.zaraz = {
+                deferred: []
+            }, a.zaraz.track = (e, t) => {
+                for (key in a.zarazData.tracks.push(e), t) a.zarazData["z_" + key] = t[key]
+            }, a.zaraz._preSet = [], a.zaraz.set = (e, t, r) => {
+                a.zarazData["z_" + e] = t, a.zaraz._preSet.push([e, t, r])
+            }, a.addEventListener("DOMContentLoaded", (() => {
+                var t = e.getElementsByTagName(r)[0],
+                    z = e.createElement(r),
+                    n = e.getElementsByTagName("title")[0];
+                n && (a.zarazData.t = e.getElementsByTagName("title")[0].text), a.zarazData.w = a.screen
+                    .width, a.zarazData.h = a.screen.height, a.zarazData.j = a.innerHeight, a.zarazData
+                    .e = a.innerWidth, a.zarazData.l = a.location.href, a.zarazData.r = e.referrer, a
+                    .zarazData.k = a.screen.colorDepth, a.zarazData.n = e.characterSet, a.zarazData.o =
+                    (new Date).getTimezoneOffset(), z.defer = !0, z.src =
+                    "../../../cdn-cgi/zaraz/sd0d9.js?z=" + btoa(encodeURIComponent(JSON.stringify(a
+                        .zarazData))), t.parentNode.insertBefore(z, t)
+            }))
+        }(w, d, 0, "script");
+    })(window, document);
+    </script>
+    <title>TOTAL CAR CARE</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link href='https://fonts.googleapis.com/css?family=Roboto:400,100,300,700' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="../../../../stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="css/A.style.css.pagespeed.cf.xnCXdETYY4.css">
+</head>
+
+<body>
+    <?php
+        include('connect.php');
+        if(isset($_POST['submit']))
+        {
+            $name=$_POST['name'];
+            $email=$_POST['email'];
+            $subject=$_POST['subject'];
+            $message=$_POST['message'];
+           
+           $q=mysqli_query($con,"insert into user_contactus values('','$name','$email','$subject','$message')");
+
+            if($q)
+            {
+                echo "<script>alert('Your valuable data is get us ..Thank You so much......');</script>";
+
+            }
+            else
+            {
+                echo "<script>alert('Not Inserted.....plz try again....');</script>";
+            }   
+        }
+    ?>
+    <section class="ftco-section">
+        <div class="container">
+            <div class="row justify-content-center">
+                <!-- <div class="col-md-6 text-center mb-5">
+                     <h2 class="heading-section">Contact Us</h2> 
+                </div> -->
+            </div>
+            <div class="row justify-content-center">
+                <div class="col-md-12">
+                    <div class="wrapper">
+                        <div class="row no-gutters mb-5">
+                            <div class="col-md-7">
+                                <div class="contact-wrap w-100 p-md-5 p-4">
+                                    <h3 class="mb-4">Contact Us</h3>
+                                    <div id="form-message-warning" class="mb-4"></div>
+                                    <div id="form-message-success" class="mb-4">
+                                        Your message was sent, thank you!
+                                    </div>
+                                    <form method="POST" action="" class="contactForm">
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label class="label" for="name">Full Name</label>
+                                                    <input type="text" class="form-control" name="name" id="name"
+                                                        placeholder="Name">
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label class="label" for="email">Email Address</label>
+                                                    <input type="email" class="form-control" name="email" id="email"
+                                                        placeholder="Email">
+                                                </div>
+                                            </div>
+                                            <div class="col-md-12">
+                                                <div class="form-group">
+                                                    <label class="label" for="subject">Subject</label>
+                                                    <input type="text" class="form-control" name="subject" id="subject"
+                                                        placeholder="Subject">
+                                                </div>
+                                            </div>
+                                            <div class="col-md-12">
+                                                <div class="form-group">
+                                                    <label class="label" for="#">Message</label>
+                                                    <textarea name="message" class="form-control" id="message" cols="30"
+                                                        rows="4" placeholder="Message"></textarea>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-12">
+                                                <div class="form-group">
+                                                    <input type="submit" name="submit" class="btn btn-primary" id="
+                                                        submit" value="Send Message">
+                                                    <div class="submitting"></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                            <div class="col-md-5 d-flex align-items-stretch">
+                                <div id="map">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <?php
+                                include ("connect.php");
+                                $q=mysqli_query($con,"select * from contact_us");
+                                $row=mysqli_fetch_array($q)
+                            ?>
+                            <div class="col-md-3">
+                                <div class="dbox w-100 text-center">
+                                    <div class="icon d-flex align-items-center justify-content-center">
+                                        <span><i class="fa fa-map-marker"></i></span>
+                                    </div>
+                                    <div class="text">
+                                        <p><span>Address:</span> <?php echo "$row[3]";?></p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="dbox w-100 text-center">
+                                    <div class="icon d-flex align-items-center justify-content-center">
+                                        <span class="fa fa-phone"></span>
+                                    </div>
+                                    <div class="text">
+                                        <p><span>Phone:</span> <a href="tel://1234567920">+ 1235 2355 98</a></p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="dbox w-100 text-center">
+                                    <div class="icon d-flex align-items-center justify-content-center">
+                                        <span class="fa fa-paper-plane"></span>
+                                    </div>
+                                    <div class="text">
+                                        <p><span>Email:</span> <span class="__cf_email__"
+                                                data-cfemail="f891969e97b881978d8a8b918c9dd69b9795"><?php echo "<a href='mailto:info@totalcarcare5.com' >$row[2]</a>"; ?></span>
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="dbox w-100 text-center">
+                                    <div class="icon d-flex align-items-center justify-content-center">
+                                        <span class="fa fa-globe"></span>
+                                    </div>
+                                    <div class="text">
+                                        <p> <span>Workshop Time</span>
+                                        <div> <span>Mon - Fri 9:00 am - 7.00 pm</span></div>
+                                        <div> <span>Sat - Sun 9.00 pm - 6.00 pm</span></div>
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <script data-cfasync="false" src="../../../cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
+    <script src="js/jquery.min.js"></script>
+    <script src="js/popper.js%2bbootstrap.min.js.pagespeed.jc.3ca9D1df5x.js"></script>
+    <script>
+    eval(mod_pagespeed_fMjVPVcB81);
+    </script>
+    <script>
+    eval(mod_pagespeed_t6CaaJAz$k);
+    </script>
+    <script src="js/jquery.validate.min.js%2bgoogle-map.js%2bmain.js.pagespeed.jc.WA5acbln4j.js"></script>
+    <script>
+    eval(mod_pagespeed_7W2ercJNEH);
+    </script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&amp;sensor=false">
+    </script>
+    <script>
+    eval(mod_pagespeed_tzPlwgUI2y);
+    </script>
+    <script>
+    eval(mod_pagespeed_wbyCshsGXb);
+    </script>
+    <script defer
+        src="https://static.cloudflareinsights.com/beacon.min.js/v652eace1692a40cfa3763df669d7439c1639079717194"
+        integrity="sha512-Gi7xpJR8tSkrpF7aordPZQlW2DLtzUlZcumS8dMQjwDHEnw9I7ZLyiOj/6tZStRBGtGgN6ceN6cMH8z7etPGlw=="
+        data-cf-beacon='{"rayId":"6f298a63daea89e2","token":"cd0b4b3a733644fc843ef0b185f98241","version":"2021.12.0","si":100}'
+        crossorigin="anonymous"></script>
+</body>
+
+<!-- Mirrored from preview.colorlib.com/theme/bootstrap/contact-form-06/ by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 27 Mar 2022 16:35:44 GMT -->
+
+</html>
+<?php
+    include('f1.php');
+?>

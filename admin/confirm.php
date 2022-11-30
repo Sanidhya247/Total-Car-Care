@@ -1,0 +1,27 @@
+<?php
+    include('connect.php');
+
+        $vid = $_GET['x'];
+        $to = $_GET['y'];
+
+        $subject = "Conformation Mail";
+        $message = "You are confirmed , Now You can Sell your car using our platform ";
+        $from = "totalcarcare5@gmail.com";
+        $headers = "From : $from";
+
+        $q = mysqli_query($con,"update vendor_master set status=1 where vid=$vid");
+        $row=mysqli_fetch_array($q);
+
+        if (mail($to, $subject, $message,$from, $headers) && ($q)) 
+        if($q) 
+        {
+            echo "hiiii";
+            echo "<script>window.location.assign('manage_vendor.php')</script>";
+            echo "<script>alert('update successfully......');</script>";
+        } 
+        else 
+        {
+            echo "<script>alert('not updated...');</script>";
+        }
+    
+    ?>
